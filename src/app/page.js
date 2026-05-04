@@ -1,65 +1,191 @@
-import Image from "next/image";
+import Link from "next/link";
+import courses from "@/data/courses.json";
+import CourseCard from "@/components/CourseCard";
+
+const tips = [
+  "Schedule 30-minute daily study blocks.",
+  "Practice by rebuilding small projects.",
+  "Summarize each lesson in your own words.",
+  "Use the Pomodoro technique for focus.",
+];
+
+const instructors = [
+  {
+    name: "Ava Benson",
+    role: "Front-End Lead",
+    focus: "Design Systems",
+  },
+  {
+    name: "Leo Martinez",
+    role: "Growth Strategist",
+    focus: "Digital Marketing",
+  },
+  {
+    name: "Priya Raman",
+    role: "Product Designer",
+    focus: "UX Research",
+  },
+  {
+    name: "Noah Kim",
+    role: "Data Scientist",
+    focus: "Machine Learning",
+  },
+];
 
 export default function Home() {
+  const popularCourses = [...courses]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 3);
+
+  const trendingCourses = courses.slice(0, 4);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="flex flex-col">
+      <section className="hero-gradient animate__animated animate__fadeIn">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-6 text-white">
+            <p className="text-sm uppercase tracking-[0.4em] text-lime-200">
+              Upgrade Your Skills Today
+            </p>
+            <h1 className="font-display text-4xl leading-tight md:text-5xl">
+              Learn from Industry Experts and build real-world mastery.
+            </h1>
+            <p className="max-w-xl text-base text-slate-100/90">
+              SkillSphere brings together guided programs, expert mentors, and
+              live learning paths for Web Development, Design, Marketing, and
+              more.
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/courses"
+                className="rounded-full bg-lime-300 px-6 py-3 text-center text-sm font-semibold text-slate-950 hover:bg-lime-200"
+              >
+                Explore Courses
+              </Link>
+              <Link
+                href="/auth/signup"
+                className="rounded-full border border-white/50 px-6 py-3 text-center text-sm font-semibold text-white hover:border-lime-200 hover:text-lime-200"
+              >
+                Start Free Account
+              </Link>
+            </div>
+          </div>
+          <div className="glass-panel rounded-3xl p-6 text-slate-900">
+            <div className="space-y-4">
+              <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
+                Next Cohort
+              </p>
+              <h2 className="font-display text-2xl">Skill-Based Programs</h2>
+              <div className="grid gap-3 text-sm text-slate-600">
+                <div className="flex items-center justify-between rounded-2xl bg-white/80 px-4 py-3">
+                  <span>Full-Stack Web Dev</span>
+                  <span className="text-lime-500">12 Weeks</span>
+                </div>
+                <div className="flex items-center justify-between rounded-2xl bg-white/80 px-4 py-3">
+                  <span>Creative UI/UX</span>
+                  <span className="text-lime-500">8 Weeks</span>
+                </div>
+                <div className="flex items-center justify-between rounded-2xl bg-white/80 px-4 py-3">
+                  <span>Marketing Growth Lab</span>
+                  <span className="text-lime-500">6 Weeks</span>
+                </div>
+              </div>
+              <p className="text-xs text-slate-500">
+                New releases every month, tailored to your goals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-16">
+        <div className="mb-8 flex items-end justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+              Popular Courses
+            </p>
+            <h2 className="section-title font-display text-3xl text-slate-900">
+              Top Rated Picks
+            </h2>
+          </div>
+          <Link href="/courses" className="text-sm font-semibold text-slate-700">
+            View All
+          </Link>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {popularCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16">
+        <div className="grid gap-10 rounded-3xl bg-slate-950 px-8 py-12 text-slate-100 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.4em] text-lime-200">
+              Learning Tips
+            </p>
+            <h2 className="font-display text-3xl">
+              Stay consistent and learn smarter.
+            </h2>
+            <p className="text-sm text-slate-300">
+              Small wins build big skills. Try these focused study techniques.
+            </p>
+          </div>
+          <div className="grid gap-3 text-sm">
+            {tips.map((tip) => (
+              <div
+                key={tip}
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+              >
+                {tip}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16">
+        <div className="mb-8">
+          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+            Top Instructors
           </p>
+          <h2 className="section-title font-display text-3xl text-slate-900">
+            Learn with the best mentors
+          </h2>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="grid gap-6 md:grid-cols-4">
+          {instructors.map((instructor) => (
+            <div
+              key={instructor.name}
+              className="glass-panel rounded-2xl p-5 text-slate-900"
+            >
+              <div className="mb-4 h-12 w-12 rounded-full bg-lime-300" />
+              <p className="font-display text-lg">{instructor.name}</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                {instructor.role}
+              </p>
+              <p className="text-sm text-slate-600">Focus: {instructor.focus}</p>
+            </div>
+          ))}
         </div>
-      </main>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 pb-20">
+        <div className="mb-8">
+          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+            Trending Courses
+          </p>
+          <h2 className="section-title font-display text-3xl text-slate-900">
+            New releases this month
+          </h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-4">
+          {trendingCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
