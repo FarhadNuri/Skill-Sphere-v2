@@ -6,16 +6,16 @@ const Footer = () => {
     <footer className="border-t border-white/10 bg-slate-950 text-slate-200">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 md:grid-cols-4">
         <div className="space-y-3">
-          <p className="font-display text-xl tracking-wide">SkillSphere</p>
+          <p className="font-display text-xl tracking-wide">Skill Sphere</p>
           <p className="text-sm text-slate-400">
             Learn smarter with curated courses and expert-led lessons.
           </p>
         </div>
         <div className="space-y-2 text-sm">
           <p className="font-semibold text-slate-100">Contact</p>
-          <p>Email: hello@skillsphere.io</p>
-          <p>Phone: +1 (555) 219-8844</p>
-          <p>Location: Remote, Global</p>
+          <p>Email: farhadnuri559@gmail.com</p>
+          <p>Phone: +880 1865 779218</p>
+          <p>Location: Chattogram, Bangladesh</p>
         </div>
         <div className="space-y-2 text-sm">
           <p className="font-semibold text-slate-100">Legal</p>
@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-slate-500">
-        © 2026 SkillSphere. All rights reserved.
+        © 2026 Skill Sphere. All rights reserved.
       </div>
     </footer>
   );

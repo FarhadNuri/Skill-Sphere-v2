@@ -1,6 +1,9 @@
+"use client";
+import Image from "next/image";
 import Link from "next/link";
 import courses from "@/data/courses.json";
 import CourseCard from "@/components/CourseCard";
+import { useSession } from "@/lib/auth-client";
 
 const tips = [
   "Schedule 30-minute daily study blocks.",
@@ -12,27 +15,33 @@ const tips = [
 const instructors = [
   {
     name: "Ava Benson",
+    image: "/images/img5.png",
     role: "Front-End Lead",
     focus: "Design Systems",
   },
   {
     name: "Leo Martinez",
+    image: "/images/img2.png",
     role: "Growth Strategist",
     focus: "Digital Marketing",
   },
   {
     name: "Priya Raman",
+    image: "/images/img1.png",
     role: "Product Designer",
     focus: "UX Research",
   },
   {
     name: "Noah Kim",
+    image: "/images/img12.png",
     role: "Data Scientist",
     focus: "Machine Learning",
   },
 ];
 
 export default function Home() {
+  const { data } = useSession();
+  const user = data?.user;
   const popularCourses = [...courses]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 3);
@@ -62,17 +71,19 @@ export default function Home() {
               >
                 Explore Courses
               </Link>
-              <Link
-                href="/auth/signup"
-                className="rounded-full border border-white/50 px-6 py-3 text-center text-sm font-semibold text-white hover:border-lime-200 hover:text-lime-200"
-              >
-                Start Free Account
-              </Link>
+              {!user && (
+                <Link
+                  href="/auth/signup"
+                  className="rounded-full border border-white/50 px-6 py-3 text-center text-sm font-semibold text-white hover:border-lime-200 hover:text-lime-200"
+                >
+                  Start Free Account
+                </Link>
+              )}
             </div>
           </div>
           <div className="glass-panel rounded-3xl p-6 text-slate-900">
             <div className="space-y-4">
-              <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
+              <p className="text-sm uppercase font-semibold tracking-[0.3em] text-slate-600">
                 Next Cohort
               </p>
               <h2 className="font-display text-2xl">Skill-Based Programs</h2>
@@ -101,7 +112,7 @@ export default function Home() {
       <section className="mx-auto w-full max-w-6xl px-6 py-16">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+            <p className="text-xs uppercase font-semibold tracking-[0.4em] text-slate-600">
               Popular Courses
             </p>
             <h2 className="section-title font-display text-3xl text-slate-900">
@@ -147,7 +158,7 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16">
         <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+          <p className="text-xs uppercase font-semibold tracking-[0.4em] text-slate-600">
             Top Instructors
           </p>
           <h2 className="section-title font-display text-3xl text-slate-900">
@@ -160,7 +171,15 @@ export default function Home() {
               key={instructor.name}
               className="glass-panel rounded-2xl p-5 text-slate-900"
             >
-              <div className="mb-4 h-12 w-12 rounded-full bg-lime-300" />
+              <div className="mb-4 h-12 w-12 overflow-hidden rounded-full">
+                <Image
+                  src={instructor.image}
+                  alt={instructor.name}
+                  width={48}
+                  height={48}
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <p className="font-display text-lg">{instructor.name}</p>
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                 {instructor.role}
@@ -173,7 +192,7 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-20">
         <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+          <p className="text-xs uppercase font-semibold tracking-[0.4em] text-slate-600">
             Trending Courses
           </p>
           <h2 className="section-title font-display text-3xl text-slate-900">

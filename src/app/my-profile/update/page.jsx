@@ -15,7 +15,7 @@ const UpdateProfilePage = async () => {
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
-      <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+      <p className="text-xs uppercase font-semibold tracking-[0.4em] text-slate-600">
         Update Information
       </p>
       <h1 className="font-display text-4xl text-slate-900">

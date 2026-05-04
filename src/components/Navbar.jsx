@@ -10,16 +10,16 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <nav className="sticky top-0 z-40 w-full border-b border-white/10 bg-slate-950/80 text-slate-100 backdrop-blur-lg">
+        <nav className="sticky top-0 z-40 w-full border-b border-slate-500 bg-white/70 text-slate-900 backdrop-blur-lg">
             <header className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
                 <div className="flex items-center gap-3">
-                    <Link href="/" className="font-display text-2xl font-semibold tracking-wide">
-                        <span className="bg-gradient-to-r from-lime-300 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+                    <Link href="/" className="font-display text-xl font-semibold tracking-wide sm:text-2xl">
+                        <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-emerald-600 bg-clip-text text-transparent">
                             Skill Sphere
                         </span>
                     </Link>
                 </div>
-                <ul className="hidden items-center gap-6 text-sm md:flex">
+                <ul className="hidden items-center gap-6 text-sm font-semibold md:flex">
                     <li>
                         <Link className="hover:text-lime-300" href="/">
                             Home
@@ -51,13 +51,13 @@ const Navbar = () => {
                                         className="h-full w-full object-cover"
                                     />
                                 </div>
-                                <span className="hidden text-slate-300 sm:block">
+                                <span className="hidden font-semibold text-slate-700 sm:block">
                                     {user.name || "Learner"}
                                 </span>
                             </div>
                             <button
                                 onClick={() => signOut()}
-                                className="rounded-full border border-lime-300/60 px-4 py-2 text-lime-200 hover:bg-lime-300 hover:text-slate-950"
+                                className="cursor-pointer rounded-full border border-slate-500 px-4 py-2 font-semibold text-slate-900 hover:border-lime-400 hover:bg-lime-300 hover:text-slate-950"
                             >
                                 Logout
                             </button>
@@ -66,7 +66,7 @@ const Navbar = () => {
                         <>
                             <Link
                                 href="/auth/signin"
-                                className="rounded-full border border-white/20 px-4 py-2 hover:border-lime-300 hover:text-lime-200"
+                                className="rounded-full border border-slate-300 px-4 py-2 text-slate-900 hover:border-slate-900 hover:bg-slate-900 hover:text-white"
                             >
                                 Login
                             </Link>
@@ -81,7 +81,7 @@ const Navbar = () => {
                     <button
                         type="button"
                         onClick={() => setIsMenuOpen((prev) => !prev)}
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white hover:border-lime-300 md:hidden"
+                        className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:border-lime-300 md:hidden"
                         aria-label="Toggle navigation menu"
                         aria-expanded={isMenuOpen}
                     >
@@ -107,7 +107,7 @@ const Navbar = () => {
                 </div>
             </header>
             {isMenuOpen && (
-                <div className="border-t border-white/10 bg-slate-950/95 px-6 py-4 md:hidden">
+                <div className="border-t border-slate-200/70 bg-white/90 px-6 py-4 md:hidden">
                     <div className="flex flex-col gap-3 text-sm">
                         <Link
                             className="hover:text-lime-300"

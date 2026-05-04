@@ -41,16 +41,7 @@ const SignUpPage = () => {
         }
     };
 
-    const handleGoogleSignUp = async () => {
-        const { error } = await authClient.signUp.social({
-            provider: "google",
-            callbackURL: "/",
-        });
 
-        if (error) {
-            toast.error(error.message || "Google sign up failed.");
-        }
-    };
 
     return (
         <div className="mx-auto flex min-h-[70vh] w-full max-w-4xl items-center justify-center px-6 py-16">
@@ -113,7 +104,7 @@ const SignUpPage = () => {
                     >
                         <Label>Password</Label>
                         <Input name="password" placeholder="Enter your password" />
-                        <Description>
+                        <Description className="text-slate-500">
                             Must be at least 8 characters with 1 uppercase and 1 number
                         </Description>
                         <FieldError />
@@ -123,9 +114,7 @@ const SignUpPage = () => {
                             <Check />
                             Register
                         </Button>
-                        <Button onPress={handleGoogleSignUp} variant="outline">
-                            Sign up with Google
-                        </Button>
+
                     </div>
                 </Form>
                 <p className="mt-6 text-sm text-slate-600">

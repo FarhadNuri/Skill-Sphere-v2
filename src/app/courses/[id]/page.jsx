@@ -36,7 +36,7 @@ const CourseDetailsPage = async ({ params }) => {
             />
           </div>
           <div className="space-y-3">
-            <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+            <p className="text-xs uppercase font-semibold tracking-[0.4em] text-slate-600">
               {course.category}
             </p>
             <h1 className="font-display text-4xl text-slate-900">
@@ -77,7 +77,7 @@ const CourseDetailsPage = async ({ params }) => {
       </div>
 
       <div className="mt-12">
-        <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+        <p className="text-xs uppercase font-semibold tracking-[0.4em] text-slate-600">
           Curriculum
         </p>
         <h2 className="font-display text-3xl text-slate-900">

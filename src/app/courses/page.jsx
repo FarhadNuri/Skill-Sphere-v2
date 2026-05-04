@@ -17,7 +17,7 @@ const CoursesPage = () => {
   return (
     <div className="mx-auto w-full max-w-6xl px-6 py-16">
       <div className="mb-10 space-y-3">
-        <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+        <p className="text-xs uppercase font-semibold tracking-[0.4em] text-slate-600">
           All Courses
         </p>
         <h1 className="font-display text-4xl text-slate-900">
