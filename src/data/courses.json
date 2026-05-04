@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "title": "Complete Web Development Bootcamp",
+    "instructor": "John Doe",
+    "duration": "20 hours",
+    "rating": 4.8,
+    "level": "Beginner",
+    "description": "Learn full-stack web development from scratch. Master HTML, CSS, JavaScript, React, Node.js, and MongoDB.",
+    "image": "images/c1.png",
+    "category": "Development",
+    "price": "$49.99",
+    "students": 15420,
+    "curriculum": [
+      "Introduction to Web Development",
+      "HTML & CSS Fundamentals",
+      "JavaScript Basics",
+      "React.js Framework",
+      "Node.js & Express",
+      "MongoDB Database",
+      "Building Real Projects"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "UI/UX Design Masterclass",
+    "instructor": "Sarah Johnson",
+    "duration": "15 hours",
+    "rating": 4.9,
+    "level": "Intermediate",
+    "description": "Master the art of user interface and user experience design. Learn Figma, Adobe XD, and design principles.",
+    "image": "images/c2.png",
+    "category": "Design",
+    "price": "$39.99",
+    "students": 12350,
+    "curriculum": [
+      "Design Thinking Process",
+      "User Research Methods",
+      "Wireframing & Prototyping",
+      "Figma Mastery",
+      "Color Theory & Typography",
+      "Responsive Design",
+      "Portfolio Building"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Digital Marketing Pro",
+    "instructor": "Mike Chen",
+    "duration": "18 hours",
+    "rating": 4.7,
+    "level": "Beginner",
+    "description": "Complete digital marketing course covering SEO, social media marketing, email marketing, and analytics.",
+    "image": "images/c3.png",
+    "category": "Marketing",
+    "price": "$44.99",
+    "students": 9870,
+    "curriculum": [
+      "Digital Marketing Fundamentals",
+      "SEO & Content Marketing",
+      "Social Media Strategy",
+      "Email Marketing",
+      "Google Analytics",
+      "Paid Advertising",
+      "Marketing Automation"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Python Programming Complete Course",
+    "instructor": "Emily Davis",
+    "duration": "25 hours",
+    "rating": 4.9,
+    "level": "Beginner",
+    "description": "Learn Python from basics to advanced. Perfect for beginners who want to start programming.",
+    "image": "images/c4.png",
+    "category": "Development",
+    "price": "$54.99",
+    "students": 18900,
+    "curriculum": [
+      "Python Basics",
+      "Data Types & Variables",
+      "Control Flow",
+      "Functions & Modules",
+      "Object-Oriented Programming",
+      "File Handling",
+      "Real-World Projects"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Data Science & Machine Learning",
+    "instructor": "Dr. Robert Smith",
+    "duration": "30 hours",
+    "rating": 4.8,
+    "level": "Advanced",
+    "description": "Master data science and machine learning with Python. Learn pandas, numpy, scikit-learn, and TensorFlow.",
+    "image": "images/c5.png",
+    "category": "Data Science",
+    "price": "$69.99",
+    "students": 11200,
+    "curriculum": [
+      "Data Analysis with Pandas",
+      "Data Visualization",
+      "Statistics for ML",
+      "Machine Learning Algorithms",
+      "Deep Learning Basics",
+      "TensorFlow & Keras",
+      "Real ML Projects"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Mobile App Development with React Native",
+    "instructor": "Alex Turner",
+    "duration": "22 hours",
+    "rating": 4.7,
+    "level": "Intermediate",
+    "description": "Build cross-platform mobile apps with React Native. Learn to create iOS and Android apps.",
+    "image": "images/c6.png",
+    "category": "Development",
+    "price": "$59.99",
+    "students": 8450,
+    "curriculum": [
+      "React Native Fundamentals",
+      "Navigation & Routing",
+      "State Management",
+      "API Integration",
+      "Native Features",
+      "App Deployment",
+      "Building Real Apps"
+    ]
+  }
+]
