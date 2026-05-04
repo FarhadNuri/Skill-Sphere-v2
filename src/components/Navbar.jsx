@@ -2,18 +2,21 @@
 import { signOut, useSession } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const Navbar = () => {
     const { data, isPending } = useSession();
     const user = data?.user;
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <nav className="sticky top-0 z-40 w-full border-b border-white/10 bg-slate-950/80 text-slate-100 backdrop-blur-lg">
             <header className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
                 <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-lg bg-lime-300" />
-                    <Link href="/" className="font-display text-lg tracking-wide">
-                        SkillSphere
+                    <Link href="/" className="font-display text-2xl font-semibold tracking-wide">
+                        <span className="bg-gradient-to-r from-lime-300 via-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+                            Skill Sphere
+                        </span>
                     </Link>
                 </div>
                 <ul className="hidden items-center gap-6 text-sm md:flex">
@@ -75,8 +78,61 @@ const Navbar = () => {
                             </Link>
                         </>
                     )}
+                    <button
+                        type="button"
+                        onClick={() => setIsMenuOpen((prev) => !prev)}
+                        className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white hover:border-lime-300 md:hidden"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={isMenuOpen}
+                    >
+                        <span className="sr-only">Toggle menu</span>
+                        <span className="relative block h-3.5 w-5">
+                            <span
+                                className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition ${
+                                    isMenuOpen ? "translate-y-1.5 rotate-45" : ""
+                                }`}
+                            />
+                            <span
+                                className={`absolute left-0 top-1.5 h-0.5 w-5 rounded-full bg-current transition ${
+                                    isMenuOpen ? "opacity-0" : ""
+                                }`}
+                            />
+                            <span
+                                className={`absolute left-0 top-3 h-0.5 w-5 rounded-full bg-current transition ${
+                                    isMenuOpen ? "-translate-y-1.5 -rotate-45" : ""
+                                }`}
+                            />
+                        </span>
+                    </button>
                 </div>
             </header>
+            {isMenuOpen && (
+                <div className="border-t border-white/10 bg-slate-950/95 px-6 py-4 md:hidden">
+                    <div className="flex flex-col gap-3 text-sm">
+                        <Link
+                            className="hover:text-lime-300"
+                            href="/"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            className="hover:text-lime-300"
+                            href="/courses"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Courses
+                        </Link>
+                        <Link
+                            className="hover:text-lime-300"
+                            href="/my-profile"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            My Profile
+                        </Link>
+                    </div>
+                </div>
+            )}
         </nav>
     );
 };

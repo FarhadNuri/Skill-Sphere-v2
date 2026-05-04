@@ -5,6 +5,7 @@ import { auth } from "@/lib/auth";
 import courses from "@/data/courses.json";
 
 const CourseDetailsPage = async ({ params }) => {
+  const { id } = await params;
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -14,8 +15,7 @@ const CourseDetailsPage = async ({ params }) => {
     redirect(`/auth/signin?callback=/courses/${params.id}`);
   }
 
-  const courseId = Number(params.id);
-  const course = courses.find((item) => item.id === courseId);
+  const course = courses.find((item) => String(item.id) === id);
 
   if (!course) {
     notFound();
