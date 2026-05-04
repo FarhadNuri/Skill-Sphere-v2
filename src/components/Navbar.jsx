@@ -3,11 +3,17 @@ import { signOut, useSession } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
     const { data, isPending } = useSession();
     const user = data?.user;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleLogout = () => {
+        toast.success("Logged out.");
+        setTimeout(() => signOut(), 300);
+    };
 
     return (
         <nav className="sticky top-0 z-40 w-full border-b border-slate-500 bg-white/70 text-slate-900 backdrop-blur-lg">
@@ -56,7 +62,7 @@ const Navbar = () => {
                                 </span>
                             </div>
                             <button
-                                onClick={() => signOut()}
+                                onClick={handleLogout}
                                 className="cursor-pointer rounded-full border border-slate-500 px-4 py-2 font-semibold text-slate-900 hover:border-lime-400 hover:bg-lime-300 hover:text-slate-950"
                             >
                                 Logout

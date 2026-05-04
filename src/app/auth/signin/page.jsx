@@ -20,6 +20,7 @@ const SignInForm = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const callbackURL = searchParams.get("callback") || "/";
+    const callbackWithToast = `${callbackURL}${callbackURL.includes("?") ? "&" : "?"}toast=login`;
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +31,7 @@ const SignInForm = () => {
             email: userData.email,
             password: userData.password,
             rememberMe: true,
-            callbackURL,
+            callbackURL: callbackWithToast,
         });
 
         if (error) {
@@ -39,15 +40,14 @@ const SignInForm = () => {
         }
 
         if (data) {
-            toast.success("Welcome back!");
-            router.push(callbackURL);
+            router.push(callbackWithToast);
         }
     };
 
     const handleGoogleSignIn = async () => {
         const { error } = await authClient.signIn.social({
             provider: "google",
-            callbackURL,
+            callbackURL: callbackWithToast,
         });
 
         if (error) {
