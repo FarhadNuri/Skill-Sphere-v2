@@ -12,10 +12,10 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import toast from "react-hot-toast";
 
-const SignInPage = () => {
+const SignInForm = () => {
     const [isVisible, setIsVisible] = useState(false);
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -117,6 +117,14 @@ const SignInPage = () => {
                 </p>
             </div>
         </div>
+    );
+};
+
+const SignInPage = () => {
+    return (
+        <Suspense fallback={<div className="py-16 text-center text-slate-500">Loading...</div>}>
+            <SignInForm />
+        </Suspense>
     );
 };
 
