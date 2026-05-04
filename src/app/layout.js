@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ToastListener from "@/components/ToastListener";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-body",
@@ -30,7 +31,9 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <ToastListener />
+        <Suspense fallback={null}>
+          <ToastListener />
+        </Suspense>
         <Toaster position="top-right" toastOptions={{ duration: 5000 }} />
       </body>
     </html>
